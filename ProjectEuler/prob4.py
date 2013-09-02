@@ -6,15 +6,17 @@ def main():
 
 def LargestPalindromeProduct():
     i = 999
+    pals = []
     while i > 1:
         j = 999
         while j > 1:
             res = IsPalindromeProduct(i, j)
             if res:
-                return i * j
+                pals.append(i*j)
             j = j - 1
         i = i - 1
-    print("Answer not found")
+    srt = sorted(pals, reverse=True)
+    print(srt[0])
 
 def IsPalindromeProduct(x, y):
     prod = str(x * y)
