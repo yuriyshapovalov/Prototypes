@@ -1,25 +1,33 @@
 # projecteuler.net/problem=3
 
 def LargestPrimeFactor():
-	res = FindLargestPrimeNumber(600851475143)
+	print('begin')
+	res = FindLargestPrimeNumberUp(600851475143)
 	print(res)
 
-def FindLargestPrimeNumber(n):
-	i = n
-	while i > 1:
-		i = i - 1
+def FindLargestPrimeNumberUp(n):
+	for i in range(2, int(n/2)):
 		if n % i == 0:
-			j = i
-			prime = True
-			while j > 2:
-				j = j - 1
-				if i % j == 0:
-					prime = False
-					break
-			if prime:
+			if isPrime(i):
+				print(i)
+
+def FindLargestPrimeNumber(n):
+	i = (n-1)/2
+	while i > 1:
+		i = i / 2
+		print(i)
+		if n % i == 0:
+			print(i)
+			if isPrime(i):
 				return i
 
-
+def isPrime(n):
+    i = n-1
+    while i > 1:
+        if n % i == 0:
+            return False
+        i = i - 1
+    return True
 		
 
 if __name__ == "__main__":
