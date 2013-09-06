@@ -5,21 +5,21 @@ def main():
     print(answer)
 
 def SumOfPrimes(n):
-    i = 2
-    res = 0
-    while i < n:
-        if isPrime(i):
-            
-            res = res + i
-        i = i + 1
-    return res
+	i = n-1
+	res=0
+	while i > 1:
+		if isPrime(i):
+			print(i)
+			res += i
+		i -= 1
+	return res
 
 def isPrime(n):
-    i = n-1
-    while i > 1:
+    i = 2
+    while i < n:
         if n % i == 0:
             return False
-        i = i - 1
+        i += 1
     return True
 
 if __name__ == '__main__':
