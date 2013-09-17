@@ -1,4 +1,4 @@
-#projecteuler.net/problem=43
+# projecteuler.net/problem=43
 
 def main():
     answer = SubStringDivisibility()
@@ -11,7 +11,7 @@ def SubStringDivisibility():
             #print("- {}".format(num))
             if SubStringDiv(num):
                 res += num
-                print("################## {0} --- (1)".format(num, res))
+                print("- {0} - ({1})".format(num, res))
         num -= 1
     return res
 
