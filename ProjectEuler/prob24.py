@@ -1,47 +1,47 @@
 # projecteuler.net/problem=24
 
 def main():
-    answer = LexPermutation('0123', 1000000)
-    print(answer)
+    answer = LexPermutation('0123456789', 1000000)
+    print("Answer: {}".format(answer))
 
 def LexPermutation(n, numPerm):
     strlist = list(n)
     counter = 1
     while counter < numPerm:
-        res = Permutate(strlist)
-        #print(res)
+        strlist = Permutate(strlist)
         counter += 1
+    res = ''
+    for i in strlist:
+        res += str(i)
+    return res
 
 def Permutate(n):
-    print(n)
     length = len(n)
     tail = []
-
     i = length-1
-    while i > 0:
-        if n[i] > n[i-1]:
 
-            tmp = n[i]
-            n[i] = n[i-1]
-            n[i-1] = tmp            
+    while n[i] <= n[i-1]:
+        i = i - 1
+    
+    j = length
+    while (n[j-1] <= n[i-1]):
+        j = j - 1
 
-            if len(tail) > 0:
-                #print("tail not empty")
 
-                tk = 0
-                k = i+1
-                while tk < len(tail):
-                    #print("{0} | {1} ({2})|({3})".format(n, tail, k, tk))
-                    n[k] = tail[tk]
-                    k += 1
-                    tk += 1
-                tail.clear()
-            return n
-            #print('trace {0} - {1}'.format(n[i], n[i-1]))
+    tmp = n[i-1]
+    n[i-1] = n[j-1]
+    n[j-1] = tmp            
 
-        else:
-            tail.append(n[i])
-        i -= 1
+    i += 1
+    j = length
+    while(i < j):
+        tmp = n[i-1]
+        n[i-1] = n[j-1]
+        n[j-1] = tmp
+        i += 1
+        j -= 1
+    return n
+
 
 if __name__ == '__main__':
     main()
