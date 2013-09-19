@@ -1,4 +1,5 @@
 # projecteuler.net/problem=23
+from math import sqrt
 
 def main():
     answer = NonAbundantSums()
@@ -6,21 +7,27 @@ def main():
 
 def NonAbundantSums():
     abund_nums = []
-    print('Preparing ... ')
     arr = [x for x in range(1, 28123)]
-    print('Finding abundant numbers ... ')
-    for i in range(1, 28123):
+    for i in range(12, 28124):
         sm = SumOfAllDivisors(i)
         if sm > i:
+            #print("{} = {}".format(i, sm))
             abund_nums.append(i)
 
-    print('Cleaning set of non abundant numbers ... ')
-    ab_len = len(abund_nums) - 1
-    for i in range(1, ab_len):
-        for j in range(i, ab_len):
-            s = i + j
-            if s in arr:
-                arr.remove(s)
+    print(len(abund_nums))
+    
+    deq_sq = set()
+    ln = len(abund_nums)-1
+    pos = 0
+    for i in range(0, ln):
+        for j in range(pos, ln):
+            prd = i + j
+            deq_sq.add(prd)
+            if prd in arr:
+                arr.remove(prd)
+        pos += 1
+
+    print(len(deq_sq))
 
     sm = 0
     for i in arr:
@@ -30,11 +37,15 @@ def NonAbundantSums():
     
 
 def SumOfAllDivisors(n):
-    sum = 0
-    for i in range(1, int(n/2)+1):
+    nod = 0
+    sq = int(n/2)+1
+    i = 1
+    while i <= sq:
         if n % i == 0:
-            sum += i
-    return sum
+            nod += i
+        i += 1
+
+    return nod
 
 if __name__ == '__main__':
     main()

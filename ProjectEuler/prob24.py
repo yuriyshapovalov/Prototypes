@@ -1,17 +1,13 @@
 # projecteuler.net/problem=24
 
 def main():
-    answer = LexPermutation('0123')
+    answer = LexPermutation('0123', 1000000)
     print(answer)
 
-def LexPermutation(n):
-    strlist = []
-    for i in n:
-        strlist.append(i)
-    print(strlist)
-    res = n
-    counter = 0
-    while counter < 8:
+def LexPermutation(n, numPerm):
+    strlist = list(n)
+    counter = 1
+    while counter < numPerm:
         res = Permutate(strlist)
         #print(res)
         counter += 1
