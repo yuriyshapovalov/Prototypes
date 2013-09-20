@@ -17,7 +17,7 @@ def ConcealedSquare():
             el = str(a[0]) + str(a[1])
             #print(el)
 
-            if el[0] == '1' and el[2] == '2' and el[4] == 3 and el[6] == 4 and el[8] == 5 and el[10] == 6 and el[12] == 7 and el[14] == 8 and el[16] == 9 and el[18] == 0: 
+            if el[0] == '1' and el[2] == '2' and el[4] == '3' and el[6] == '4' and el[8] == '5' and el[10] == '6' and el[12] == '7' and el[14] == '8' and el[16] == '9' and el[18] == '0': 
                 return i
         
 
