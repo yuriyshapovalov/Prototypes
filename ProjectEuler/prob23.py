@@ -11,7 +11,6 @@ def NonAbundantSums():
     for i in range(12, 28124):
         sm = SumOfAllDivisors(i)
         if sm > i:
-            #print("{} = {}".format(i, sm))
             abund_nums.append(i)
 
     print(len(abund_nums))
@@ -22,6 +21,9 @@ def NonAbundantSums():
     for i in range(0, ln):
         for j in range(pos, ln):
             prd = i + j
+            if prd > 28123:
+                break
+
             deq_sq.add(prd)
             if prd in arr:
                 arr.remove(prd)
