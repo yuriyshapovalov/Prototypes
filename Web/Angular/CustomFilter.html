@@ -1,0 +1,22 @@
+<html ng-app='testApp'>
+    <head>
+    </head>
+    <body>
+        <div>{{"this would be some text that must be capitalized" | titleCase }}</div>
+
+        <script>
+            var app = angular.module("testApp", []);
+
+            app.filter("titleCase", function() {
+                var filterFun = function(input) {
+                    var words = input.split(' ');
+                    for (var i = 0; i < words.length; i++) {
+                        words[i] = worrd[i].charAt(0).toUpperCase() + words[i].slice(1);
+                    }
+                    return words.join(' ');
+                }
+                return filterFunc
+            });
+        </script>
+    </body>
+</html>
