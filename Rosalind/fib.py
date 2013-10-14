@@ -1,27 +1,15 @@
 # rosalind.info/problems/fib
 import sys
+from math import sqrt
 
 def main(n, k):
-    #tmp = fib(k)
-    n = int(n)
-    k = int(k)
-    pair = 1
+    pair = 0
+    childs = 1
     for i in range(1, n):
-        print(pair)
-        pair =+ int(pair*k / 2)
-    print(pair)
-
-def fib(n):
-    fb = []
-    fb.append(1)
-    fb.append(1)
-    for i in range(1, n):
-        fb.append(fb[i-1] + fb[i])
-    return fb
-
-
-
-
+        sub_child = pair * k
+        pair += childs
+        childs = sub_child
+    print (childs + pair)
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    main(int(sys.argv[1]), int(sys.argv[2]))
