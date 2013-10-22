@@ -1,5 +1,4 @@
 # projecteuler.net/problem=23
-from math import sqrt
 
 def main():
     answer = NonAbundantSums()
