@@ -12,6 +12,13 @@ namespace TPL_Async
     {
         static void Main(string[] args)
         {
+            Thread dedicatedThread = new Thread(ComputeBoundOp);
+            dedicatedThread.Start(5);
+            Console.WriteLine("Main Thread, doing other work here.");
+            Thread.Sleep(1000);
+
+            dedicatedThread.Join();
+
             var web = new WebClient();
             var web2 = new WebClient();
 
@@ -20,17 +27,30 @@ namespace TPL_Async
             });
 
             googleTask.ContinueWith(t => {
-
-                Console.WriteLine(googleTask.Result);
+                if (t.IsFaulted)
+                {
+                    Console.WriteLine("Resource not found");
+                }
+                else
+                {
+                    Console.WriteLine(googleTask.Result);
+                }
             });
 
             Task<string> yandexTask = web2.DownloadStringTaskAsync("http://yandex.ru");
+
 
             Console.WriteLine(yandexTask.Result);
 
             Thread.Sleep(10000);
 
             Console.ReadKey();
+        }
+
+        private static void ComputeBoundOp(Object state)
+        {
+            Console.WriteLine("In compute bound state {0}", state);
+            Thread.Sleep(1000);
         }
     }
 }
