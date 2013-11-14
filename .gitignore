@@ -6,6 +6,9 @@
 # C extensions
 *.so
 
+*.cache
+obj/
+
 # Packages
 *.egg
 *.egg-info
