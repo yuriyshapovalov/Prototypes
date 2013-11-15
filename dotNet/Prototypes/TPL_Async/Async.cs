@@ -13,6 +13,7 @@ namespace TPL_Async
         static void Main(string[] args)
         {
             Thread dedicatedThread = new Thread(ComputeBoundOp);
+            dedicatedThread.IsBackground = true;
             dedicatedThread.Start(5);
             Console.WriteLine("Main Thread, doing other work here.");
             Thread.Sleep(1000);
