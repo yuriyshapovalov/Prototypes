@@ -1,11 +1,14 @@
-from urllib.request import urlopen
+from urllib import request, error
+import sys
 
-def main():
-    url = 'http://google.com'
+def main(url):
     headers = {}
-    response = urlopen(url)
-
-    print(response.read())
+    
+    try: response = request.urlopen(url)
+    except error.URLError as e:
+        print(e.reason)
+    else:
+        print(response.read())
 
 if __name__ == '__main__':
-    main()
+    main(str(sys.argv[1]))
