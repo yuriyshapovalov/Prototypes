@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.Net.NetworkInformation;
 
 namespace Net
 {
@@ -12,8 +14,11 @@ namespace Net
         {
             Console.WriteLine("Sniff");
 
-            Console.ReadKey();
+            TcpListener listner = new TcpListener(80);
 
+            listner.Start();
+
+            Console.ReadKey();
         }
     }
 }
