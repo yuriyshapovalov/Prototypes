@@ -8,6 +8,7 @@
 
 *.cache
 obj/
+libs/
 
 # Packages
 *.egg
