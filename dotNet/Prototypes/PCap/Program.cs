@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharpPcap;
 
 namespace PCap
 {
@@ -10,17 +11,28 @@ namespace PCap
     {
         static void Main(string[] args)
         {
-            var devices = SharpPcap.CaptureDeviceList.Instance;
+            var devices = CaptureDeviceList.Instance;
 
-            foreach (var dev in devices)
+            foreach (ICaptureDevice dev in devices)
             {
-                Console.WriteLine("{0} - {1}", dev.Name, dev.Description);
+                if (dev is SharpPcap.AirPcap.AirPcapDevice)
+                {
+                    Console.WriteLine("AIR - {0}", dev.Name);
+                }
+                else if (dev is SharpPcap.LibPcap.LibPcapLiveDevice)
+                {
+                    Console.WriteLine("LIB - {0}", dev.Name);
+                }
+                else if (dev is SharpPcap.WinPcap.WinPcapDevice)
+                {
+                    Console.WriteLine("WIN - {0}", dev.Name);
+                }
             }
 
             var device = devices[1];
 
             device.OnPacketArrival += Program_OnPacketArrival;
-            device.Open(SharpPcap.DeviceMode.Promiscuous);
+            device.Open(DeviceMode.Promiscuous);
 
             device.StartCapture();
 
@@ -28,9 +40,10 @@ namespace PCap
             device.StopCapture();
         }
 
-        static void Program_OnPacketArrival(object sender, SharpPcap.CaptureEventArgs e)
+        static void Program_OnPacketArrival(object sender, CaptureEventArgs e)
         {
-            var packet = PacketDotNet.Packet.ParsePacket(PacketDotNet.LinkLayers.Ethernet, e.Packet.Data);
+            Console.WriteLine("{0}", e.Packet.Timeval.ToString());
+            //var packet = PacketDotNet.Packet.ParsePacket(PacketDotNet.LinkLayers.Ethernet, e.Packet.Data);
         }
     }
 }
