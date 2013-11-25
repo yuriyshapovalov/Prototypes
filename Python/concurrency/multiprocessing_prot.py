@@ -89,6 +89,32 @@ def main():
 
     print("\n-Pipes and Queues")
 
+    pipe = mp.Pipe()
+
+    print("queue.qsize() = {}".format(q.qsize()))
+
+    q.put(['1', 43])
+    print("queue.put(['1', 43])")
+
+    q.put_nowait(['5', 'Sometext'])
+    print("queue.put_nowait(['5', 'Sometext'])")
+
+    print("queue.empty() = {}".format(q.empty()))
+    print("queue.full() = {}".format(q.full()))
+
+    print("queue.get() = {}".format(q.get()))
+    print("queue.get_nowait() = {}".format(q.get_nowait()))
+
+    print("\nMiscellaneous")
+
+    print("multiprocessing.active_children() = {}".format(mp.active_children()))
+
+    print("multiprocessing.cpu_count() = {}".format(mp.cpu_count()))
+
+    print("multiprocessing.current_process() = {}".format(mp.current_process()))
+
+    print("multiprocessing.freeze_support() = {}".format(mp.freeze_support()))
+
 
 def fnc(name):
     print("\tprocess - ", name)
