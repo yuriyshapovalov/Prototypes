@@ -42,7 +42,53 @@ def main():
     print(num.value)
     print(arr[:])
 
-    print("\nSharing state between processes (Server Process) multithreading.Process/Manager")
+    print("\nSharing state between processes (Server Process) multithreading.Manager")
+
+    with mp.Manager() as manager:
+        d = manager.dict()
+        l = manager.list(range(10))
+
+
+        p = mp.Process(target=fnc5, args=(d, l))
+        p.start()
+        p.join()
+
+        print(d)
+        print(l)
+
+    print("\nUsing a pool of workers")
+
+    with mp.Pool(processes=4) as pool:
+        result = pool.apply_async(fnc6, [10])
+        print(result.get(timeout=1))
+        print(pool.map(fnc6, range(10)))
+
+    print("\nMultiprocessing Reference")
+    print("- Process")
+
+    p = mp.Process(target=fnc, args=("new proc",))
+    print("multiprocessing.Process(target='func', args=('value')) = {}".format(p))
+
+    p.start()
+    print("process.start()")
+
+    print("process.name = {}".format(p.name))
+
+    print("process.is_alive() = {}".format(p.is_alive()))
+
+    print("process.daemon = {}".format(p.daemon))
+    
+    print("process.exitcode = {}".format(p.exitcode))
+
+    print("process.authkey = {}".format(p.authkey))
+
+    print("process.sentinel = {}".format(p.sentinel))
+
+    p.terminate()
+    print("process.terminate()")
+
+    print("\n-Pipes and Queues")
+
 
 def fnc(name):
     print("\tprocess - ", name)
@@ -65,6 +111,14 @@ def fnc4(n, a):
     for i in range(len(a)):
         a[i] = -a[i]
 
+def fnc5(d, l):
+    d[1] = '1'
+    d['2'] = 2
+    d[0.25] = None
+    l.reverse()
+
+def fnc6(x):
+    return x**2
 
 if __name__ == '__main__':
     main()
