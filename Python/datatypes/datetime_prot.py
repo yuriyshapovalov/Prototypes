@@ -68,7 +68,73 @@ def main():
     x = d.__format__("%A-%B-%w")
     print("({}) datetime.date.__format__() = {}".format(d, x))
 
-    print("\tDatetime object")
+    print("\nDatetime object")
+
+    d = datetime.datetime(2013, 10, 28, 17, 45, 29)
+    print("datetime(2013, 10, 28, 17, 45, 29) = {}".format(d))
+
+    x = datetime.datetime.today()
+    print("datetime.today() = {}".format(x))
+
+    x = datetime.datetime.now()
+    print("datetime.now() = {}".format(x))
+
+    x = datetime.datetime.utcnow()
+    print("datetime.utcnow() = {}".format(x))
+
+    x = datetime.datetime.fromtimestamp(1239456789)
+    print("datetime.fromtimestamp(1239456789) = {}".format(x))
+
+    x = datetime.datetime.utcfromtimestamp(347283)
+    print("datetime.utcfromtimestamp(347283) = {}".format(x))
+    
+    t = datetime.time(17, 31, 10, 391)
+    x = datetime.datetime.combine(d, t)
+    print("datetime.combine('date', 'time') = {}".format(x))
+
+    x = d.strptime("2013 11", "%Y %m")
+    print("({}) datetime.strptime('2013 11', '%Y %m') = {}".format(d, x))
+    
+    print("\nTime object")
+
+    t = datetime.time(21, 54, 11, 2318)
+    print("datetime.time(21, 54, 11) = {}".format(t))
+
+    y = t.min
+    print("datetime.min = {}".format(y))
+
+    y = t.max
+    print("datetime.max = {}".format(y))
+
+    y = t.resolution
+    print("datetime.resolution = {}".format(y))
+
+    y = t.hour
+    print("datetime.hour = {}".format(y))
+
+    y = t.minute
+    print("datetime.minute = {}".format(y))
+
+    y = t.second
+    print("datetime.second = {}".format(y))
+
+    y = t.microsecond
+    print("datetime.microsecond = {}".format(y))
+
+    y = t.tzinfo
+    print("datetime.tzinfo = {}".format(y))
+
+    y = t.replace(hour=7, second=21)
+    print("({}) datetime.replace(hour=7, seconds=21) = {}".format(t, y))
+
+    y = t.isoformat()
+    print("datetime.isoformat = {}".format(y))
+
+    y = t.utcoffset()
+    print("datetime.utcoffset = {}".format(y))
+
+    y = t.dst()
+    print("datetime.dst = {}".format(y))
 
 
 if __name__ == '__main__':
