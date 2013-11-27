@@ -25,14 +25,51 @@ def main():
     x = datetime.date.resolution
     print("datetime.date.resolution = {}".format(x))
 
-    x = datetime.date.year
-    print("datetime.date.year = {}".format(x))
+    d = datetime.date(2012, 11, 28)
+    x = d.year
+    print("({}) datetime.date.year = {}".format(d, x))
 
-    x = datetime.date.month
-    print("datetime.date.month = {}".format(x))
+    x = d.month
+    print("({}) datetime.date.month = {}".format(d, x))
 
-    x = datetime.date.day
-    print("datetime.date.day = {}".format(x))
+    x = d.day
+    print("({}) datetime.date.day = {}".format(d, x))
+    
+    x = d.replace(year=2013)
+    print("({}) datetime.date.replace(year=2013) = {}".format(d, x))
+
+    x = d.timetuple()
+    print("({}) datetime.date.timetuple() = {}".format(d, x))
+
+    x = d.toordinal()
+    print("({}) datetime.date.toordinal() = {}".format(d, x))
+
+    x = d.weekday()
+    print("({}) datetime.date.weekday() = {}".format(d, x))
+
+    x = d.isoweekday()
+    print("({}) datetime.date.isoweekday() = {}".format(d, x))
+
+    x = d.isocalendar()
+    print("({}) datetime.date.isocalendar() = {}".format(d, x))
+
+    x = d.isoformat()
+    print("({}) datetime.date.isoformat() = {}".format(d, x))
+
+    x = d.__str__()
+    print("({}) datetime.date.__str__ = {}".format(d, x))
+
+    x = d.ctime()
+    print("({}) datetime.date.ctime() = {}".format(d, x))
+
+    x = d.strftime("%d %a %b")
+    print("({}) datetime.date.strftime('%d %a %b') = {}".format(d, x))
+
+    x = d.__format__("%A-%B-%w")
+    print("({}) datetime.date.__format__() = {}".format(d, x))
+
+    print("\tDatetime object")
+
 
 if __name__ == '__main__':
     main()
