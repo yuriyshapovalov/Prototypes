@@ -16,9 +16,19 @@ namespace Collections
 
             Console.WriteLine("ArrayList default capacity: {0}", arrayList.Capacity);
 
-            arrayList.Add("some text");
+            arrayList.Add("some");
+            arrayList.Add("text");
 
-            Console.WriteLine("ArrayList default capacity: {0}", arrayList.Capacity);
+            Console.WriteLine("ArrayList capacity (after adding 2 elements): {0}", arrayList.Capacity);
+
+            arrayList.Add("foo");
+            arrayList.Add("bar");
+            arrayList.Add("lol");
+
+            Console.WriteLine("ArrayList capacity (after adding 3 elements): {0}", arrayList.Capacity);
+            Console.WriteLine("ArrayList count elements: {0}", arrayList.Count);
+
+
         }
     }
 }
