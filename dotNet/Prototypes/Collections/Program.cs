@@ -10,7 +10,10 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            ArrayList_p arrayListProto = new ArrayList_p();
+            //ArrayList_p arrayListProto = new ArrayList_p();
+            //BitArray_p bitArray = new BitArray_p();
+            //Stack_p stack = new Stack_p();
+            SortedList_p sortedList = new SortedList_p();
 
             Console.ReadKey();
         }
