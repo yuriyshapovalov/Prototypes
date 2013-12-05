@@ -45,6 +45,7 @@
     <Compile Include="BitArray_p.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortedList_p.cs" />
     <Compile Include="Stack_p.cs" />
   </ItemGroup>
   <ItemGroup>
