@@ -4,7 +4,6 @@ import sys
 import unittest
 
 class iprb:
-
 	def main(self, hom_dom, het, hom_rec):
 
 		total = hom_dom + het + hom_rec
@@ -37,6 +36,6 @@ if __name__ == '__main__':
 	het = int(sys.argv[2])
 	hom_rec = int(sys.argv[3])
 	if hom_dom == 0 or het == 0 or hom_rec == 0:
-		raise Eeton("et Parameters is incorrect")
+		raise Exception("ERROR: Incorrect parameters")
 	result = iprb().main(hom_dom, het, hom_rec)
 	print(result)
