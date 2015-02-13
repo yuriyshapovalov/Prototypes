@@ -1,3 +1,4 @@
+# Calculating Protein Mass
 # rosalind.info/problems/prtm
 import sys
 

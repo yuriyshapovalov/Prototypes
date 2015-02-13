@@ -1,3 +1,4 @@
+# Finding a Shared Motif
 # rosalind.info/problems/lscm
 
 class DNA_string:

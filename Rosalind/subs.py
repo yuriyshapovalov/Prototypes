@@ -1,3 +1,4 @@
+# Finding a Motif in DNA
 # rosalind.info/problems/subs
 import sys
 
